@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <title>Cafe Order Form</title> 
+        
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <!-- 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+        -->
+        <script>
+            function summary(){
+            
+                var custName = document.forms["myform"]["customer"].value;
+                    
+                var cofPrice = document.forms["myform"]["coffee"].value;
+                //alert(custName + " ordered "+ cofPrice);
+            
+                var totalPrice = Number(cofPrice);
+               
+
+                for (var count = 0; count <3; count++){
+                    if (document.forms["myform"]["extra"+count].checked){
+                        totalPrice += Number(document.forms["myform"]["extra"+count].value);
+                        
+                    }
+                }
+
+                //alert("total price is " + totalPrice);
+
+                var divElement = document.getElementById("summaryHere");
+                divElement.innerHTML ="<p>Hello " + custName + ". <br> Your total for today is $" + totalPrice;
+                document.body.appendChild(divElement);
+               
+        
+                
+               document.querySelector("p").style = "padding:100px";
+        
+    
+        
+            } 
+            
+        </script>
+        
+       
+
+
+
+    </head>
+
+    <body>
+        <div class="container">
+
+            <form name="myform" onsubmit="summary(); return false;"> 
+                
+                <div>
+                    <label>Name</label> <br>
+                    <input type="text" name="customer"> 
+                </div> <br>
+
+                <div>
+                    <label>Which Cofee Would you like to order?</label> <br>
+                    <input type="radio" name="coffee" value="3">  Coffee $3 <br>
+                    <input type="radio" name="coffee" value="5">  American Coffee $5<br>
+                    <input type="radio" name="coffee" value="7">  Iced Latte $7<br>
+                    
+                </div> <br>
+
+                <div>
+                    <label>Do you need any extras?</label> <br>
+                  
+                    <input type="checkbox" name="extra0" value="1.5">  Extra coffee $1.5<br>
+                    <input type="checkbox" name="extra1" value="2">  Whipped Cream $2<br>
+                    <input type="checkbox" name="extra2" value="3">  Extra Caramel $3<br>
+                    
+                </div> <br>
+
+                <div>
+                    <input type="submit" value="submit"> 
+                </div><br>
+
+                <div id="summaryHere">
+
+                </div>
+            </form>
+
+        </div>
+        
+    </body>
+</html>
